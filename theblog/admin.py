@@ -3,12 +3,12 @@ from django.contrib import admin
 from .models import Post, Comment
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'created_at', 'updated_at', 'is_public')
+    list_display = ('title', 'title_tag', 'author', 'created_at', 'updated_at', 'is_public')
     list_filter = ('is_public', 'created_at', 'updated_at', 'author')
     search_fields = ('title', 'body')
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
-    fields = ('title', 'author', 'body', 'is_public', 'password', 'image', 'media_link')
+    fields = ('title', 'title_tag', 'author', 'body', 'is_public', 'password', 'image', 'media_link')
 
     def save_model(self, request, obj, form, change):
         if not obj.pk:  # Check if this is a new object

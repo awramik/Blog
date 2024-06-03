@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %}Strona Główna{% endblock %}
 
 {% block content %}
     <h1>Witaj na stronie głównej!</h1>
@@ -8,11 +7,10 @@
 
     <ul>
     {% for post in object_list %}
-        <li><a href="{% url 'article-detail' post.pk %}">{{
-            post.title }}</a> - {{ post.author.first_name}}
+        <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name}}
             {{ post.author.last_name}}<br/>
             {{ post.body }}</li>
-    {%endfor%}
+    {% endfor %}
     </ul>
     <!-- Tutaj możesz dodać treść strony głównej -->
 {% endblock %}
