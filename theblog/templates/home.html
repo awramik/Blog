@@ -2,15 +2,17 @@
 
 
 {% block content %}
-    <h1>Witaj na stronie głównej!</h1>
-    <h2>Post</h2>
+    <h1>Welcome to Our Blog</h1>
+    <h2>Posts</h2>
 
     <ul>
     {% for post in object_list %}
         <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name}}
-            {{ post.author.last_name}} - <small><a href="{% url 'update_post' post.pk %}">Edit</a></small><br/>
+            {{ post.author.last_name}} - <small><a href="{% url 'update_post' post.pk %}">Edit</a>
+            <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+            </small><br/>
             {{ post.body }}</li>
     {% endfor %}
     </ul>
-    <!-- Tutaj możesz dodać treść strony głównej -->
+
 {% endblock %}
