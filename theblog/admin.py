@@ -1,6 +1,6 @@
 # blog/admin.py
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Category
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'title_tag', 'author', 'created_at', 'updated_at', 'is_public')
@@ -27,3 +27,4 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(Category)

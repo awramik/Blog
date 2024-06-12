@@ -1,16 +1,18 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 
-#def home(request):
+
+# def home(request):
 #    return render(request, 'home.html', {})
 
 
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
+    ordering = ['-id']
 
 
 class ArticleDetailView(DetailView):
@@ -22,14 +24,22 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
-    #fields = '__all__'
+    # fields = '__all__'
 
 
 class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
-    #fields = ['title', 'title_tag', 'body', 'image', 'media_link', 'is_public', 'password']
+    # fields = ['title', 'title_tag', 'body', 'image', 'media_link', 'is_public', 'password']
+
+
+class AddCategoryView(CreateView):
+    model = Category
+    # form_class = PostForm
+    template_name = 'add_category.html'
+    fields = '__all__'
+    # fields = ('title', 'body')
 
 
 class DeletePostView(DeleteView):

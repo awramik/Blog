@@ -2,6 +2,8 @@
 {% block title %}Delete Blog Post{% endblock %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
     <h1>Delete Post...</h1>
     <br/><br/>
     <h3>Delete: {{ post.title }}</h3>
@@ -13,6 +15,8 @@
             <button class="btn btn-secondary">Delete Post</button>
         </form>
     </div>
-
+{% else %}
+    You are not allowed here!
+{% endif %}
 
 {% endblock %}
