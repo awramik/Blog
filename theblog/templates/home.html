@@ -5,9 +5,11 @@
     <h2>Posts</h2>
 
 <ul>
-{% for post in object_list %}
-	<li><a href="{% url 'article-detail' post.pk %}"
-	>{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }} -
+# {% for post in object_list %}
+	<li><a href="{% url 'article-detail' post.pk %}">
+        {{ post.title }}</a>
+        - {{ post.author.first_name }}
+        {{ post.author.last_name }} -
 		{{ post.post_date }} <small>
 
 		{% if user.is_authenticated %}

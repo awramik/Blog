@@ -2,6 +2,7 @@
 from django.contrib import admin
 from .models import Post, Comment, Category
 
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'title_tag', 'author', 'created_at', 'updated_at', 'is_public')
     list_filter = ('is_public', 'created_at', 'updated_at', 'author')
@@ -15,6 +16,7 @@ class PostAdmin(admin.ModelAdmin):
             obj.author = request.user
         super().save_model(request, obj, form, change)
 
+
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('author', 'post', 'created_at', 'approved')
     list_filter = ('approved', 'created_at', 'author')
@@ -23,7 +25,9 @@ class CommentAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+
     approve_comments.short_description = "Approve selected comments"
+
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
