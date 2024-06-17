@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Welcome to Our Blog</h1>
-    <h2>Posts</h2>
 
-<ul>
-# {% for post in object_list %}
-	<li><a href="{% url 'article-detail' post.pk %}">
+    {% if category_posts %}
+    <h1>{{ cats }}</h1>
+
+    <ul>
+    {% for post in category_posts %}
+        <li><a href="{% url 'article-detail' post.pk %}">
         {{ post.title }}</a>
-        - <a href="{% url 'category' post.category%}">{{ post.category }}</a>
         - {{ post.author.first_name }}
         {{ post.author.last_name }} -
 		{{ post.post_date }} <small>
@@ -21,7 +21,12 @@
 
 	</small><br/>
 	{{ post.body|slice:":200"|safe }}</li>
-{% endfor %}
-</ul>
+    {% endfor %}
+    </ul>
+
+    {% else %}
+        <h2> Sorry this page doesn't exist.</h2>
+    {% endif %}
+
 
 {% endblock %}
